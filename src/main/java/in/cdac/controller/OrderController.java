@@ -33,7 +33,6 @@ public class OrderController {
 	
 	@GetMapping("/query")
 	public  List<OrderModel> readByOtherThanPrimaryKey() {
-		
 		// return orderModelRepository.findByProductName("WIND");
 		return orderModelRepository.customFindAllNativeSQLQuery();
 	}
