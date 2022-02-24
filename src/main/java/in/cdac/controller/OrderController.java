@@ -34,12 +34,6 @@ public class OrderController {
 	@GetMapping("/query")
 	public  List<OrderModel> readByOtherThanPrimaryKey() {
 		
-		OrderModel orderModel = new OrderModel();
-		orderModel.setProductName("WIND");
-		orderModel.setProductQty(1);
-		orderModel.setProductId("AND001");
-		orderModelRepository.findAll(orderModel);
-		
 		// return orderModelRepository.findByProductName("WIND");
 		return orderModelRepository.customFindAllNativeSQLQuery();
 	}
