@@ -4,6 +4,8 @@ import in.cdac.model.UserModel;
 import in.cdac.repository.UserModelRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,9 +22,9 @@ public class UserModelController {
     private UserModelRepository userModelRepository;
 
     @PostMapping("/")
-    public UserModel createUser(@RequestBody UserModel userModel) {
+    public ResponseEntity<?> createUser(@RequestBody UserModel userModel) {
 
         userModelRepository.save(userModel);
-        return userModel;
+        return new ResponseEntity(userModel, HttpStatus.CREATED);
     }
 }
